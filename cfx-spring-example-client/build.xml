@@ -1,0 +1,23 @@
+﻿<?xml version="1.0"?>
+<project name="base" default="start" basedir=".">
+
+    <path id="project.classpath">
+        <fileset dir="./lib">
+            <include name="*.jar" />
+        </fileset>
+    </path>
+
+    <target name="start">
+        <java classname="org.apache.cxf.tools.wsdlto.WSDLToJava" fork="true">
+            <arg value="-verbose"/>
+            <arg value="-d"/>
+            <arg value="src/stub/local"/>
+            <arg value="D:\frameXpert\workspace\cfx-spring-example-client\wsdl\BoardBc.xml"/>
+            <classpath>
+                <path refid="project.classpath"/>
+            </classpath>
+        </java>
+        
+    </target>
+
+</project>
