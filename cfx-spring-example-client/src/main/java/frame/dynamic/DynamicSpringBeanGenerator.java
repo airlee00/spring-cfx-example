@@ -45,6 +45,29 @@ public class DynamicSpringBeanGenerator {
         }
     }
     public static void main(String[] args) {
+        long l = System.currentTimeMillis();
+        System.out.println("--------start-------------");
+        test3();
+        System.out.println("===elapsed:" + (System.currentTimeMillis() - l));
+        test3();
+        l = System.currentTimeMillis();
+        test3();
+        System.out.println("===elapsed:" + (System.currentTimeMillis() - l));
+       
+    }
+    private static void test3() {
+        BoardBc sampleBean = JaxWsProxyBeanCache.getInstance().getBean(BoardBc.class, "http://localhost:8080/services/BoardBc");
+        BoardInPageVo boardInPageVo = new BoardInPageVo();
+        boardInPageVo.setBoardType("notice");
+        PageVo page = new PageVo();
+        page.setPageSize(10);
+        page.setPageNumber(1);
+        boardInPageVo.setPageVo(page);
+        System.out.println("===========> " + sampleBean.getBoardList(boardInPageVo));
+    
+    }
+    
+    private static void test2() {
         DynamicSpringBeanGenerator dynamicBeanTest = new DynamicSpringBeanGenerator();
         dynamicBeanTest.createDynamicBean(BoardBc.class, "http://localhost:8080/services/BoardBc");
         JaxWsProxyFactoryBean factory = (JaxWsProxyFactoryBean) getBean(BoardBc.class);
@@ -64,8 +87,10 @@ public class DynamicSpringBeanGenerator {
         page.setPageNumber(1);
         boardInPageVo.setPageVo(page);
         System.out.println("===========> " + sampleBean.getBoardList(boardInPageVo));
+    }
+    
+    private static void test1() {
         
-
 //        DynamicSpringBeanGenerator dynamicBeanTest = new DynamicSpringBeanGenerator();
 //        dynamicBeanTest.createDynamicBean(DeptProcess.class, "http://localhost:8080/cfx-spring-example/DeptProcess");
 //        JaxWsProxyFactoryBean factory = (JaxWsProxyFactoryBean) getBean(DeptProcess.class);
@@ -76,7 +101,7 @@ public class DynamicSpringBeanGenerator {
 //        JaxWsProxyFactoryBean factory2 = (JaxWsProxyFactoryBean) getBean(DeptProcess.class);
 //        DeptProcess sampleBean2 = (DeptProcess) factory.create();
 //        System.out.println("===========> " + sampleBean2.processDept());
-       
+        
     }
 
     @SuppressWarnings("unchecked")
