@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0"?>
 <project name="base" default="start" basedir=".">
 
-    <path id="project.classpath">
-        <fileset dir="./lib">
+    <path id="cxf.classpath">
+        <fileset dir="D:/frameXpert/bin/git/spring-cfx-example/cfx-spring-example-client/lib">
             <include name="*.jar" />
         </fileset>
     </path>
@@ -12,9 +12,9 @@
             <arg value="-verbose"/>
             <arg value="-d"/>
             <arg value="src/stub/local"/>
-            <arg value="D:\frameXpert\workspace\cfx-spring-example-client\wsdl\BoardBc.xml"/>
+            <arg value="http://localhost:8080/services/BoardBc?wsdl"/>
             <classpath>
-                <path refid="project.classpath"/>
+                <path refid="cxf.classpath"/>
             </classpath>
         </java>
         

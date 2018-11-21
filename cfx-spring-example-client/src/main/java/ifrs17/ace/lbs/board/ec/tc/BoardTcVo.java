@@ -12,7 +12,6 @@ import framexpert.run.common.io.type.annotation.Property;
 import framexpert.run.oltp.ext.annotation.LocalName;
 import framexpert.run.oltp.ext.annotation.TableVo;
 import framexpert.run.oltp.ext.vo.AbstractVo;
-import ifrs17.ace.lbs.board.DateAdapter;
 
 
 /**
@@ -30,9 +29,6 @@ import ifrs17.ace.lbs.board.DateAdapter;
 @CompositeType
 @LocalName("게시판")
 @XmlAccessorType(XmlAccessType.FIELD)
-//@XmlJavaTypeAdapters(  
-//@XmlJavaTypeAdapter(value=DateAdapter2.class,type=Timestamp.class)
-//)
 public class BoardTcVo extends AbstractVo {
 
 	private static final long serialVersionUID = 1L;
@@ -56,7 +52,7 @@ public class BoardTcVo extends AbstractVo {
     private String regId;
 
 	@Property(length=17)
-	@XmlJavaTypeAdapter(value=DateAdapter.class)
+	@XmlJavaTypeAdapter(value=framexpert.run.common.util.xml.support.TimestampXmlAdapter.class)
     private Timestamp regDate;
 
 	public BigDecimal getId() {

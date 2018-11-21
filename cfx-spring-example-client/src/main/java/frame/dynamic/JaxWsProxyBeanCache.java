@@ -11,20 +11,21 @@ public class JaxWsProxyBeanCache {
 
     private static JaxWsProxyBeanCache instance;
     private static Object monitor = new Object();
-
+    private static String cacheName ="_webServiceSoapBeanCache_";
+    private static int capacity = 2000;
     private Cache<String, Object> cache;
 
-    private JaxWsProxyBeanCache() {
+    private JaxWsProxyBeanCache(String cachename, int capacity) {
         cache = new Cache2kBuilder<String, Object>() {}
-        .name("SoapBeanCache")
+        .name(cachename)
         .eternal(true)
-        .entryCapacity(2000)
+        .entryCapacity(capacity)
         .build();
     }
     
     public <T> T getBean(final Class<T> serviceClass,final String address) {
         Object bean = cache.get(serviceClass.getName());
-        System.out.println("=============================bean:" + bean);
+        System.out.println("=============================bean:");
         if(bean == null) {
             bean = createBean(serviceClass, address);
             cache.put(serviceClass.getName(), bean);
@@ -56,7 +57,7 @@ public class JaxWsProxyBeanCache {
         if (instance == null) {
             synchronized (monitor) {
                 if (instance == null) {
-                    instance = new JaxWsProxyBeanCache();
+                    instance = new JaxWsProxyBeanCache(cacheName,capacity);
                 }
             }
         }

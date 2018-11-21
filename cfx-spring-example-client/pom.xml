@@ -48,23 +48,41 @@
 		    <artifactId>sapjco3</artifactId>
 		    <version>3.0</version>
 		</dependency>
-        <dependency>
-            <groupId>framexpert.run.oltp</groupId>
-            <artifactId>framexpert-run-oltp-ext</artifactId>
-            <version>4.0.0-SNAPSHOT</version>
-            <scope>test</scope>
-        </dependency>
 		<dependency>
 			<groupId>wsdl4j</groupId>
 			<artifactId>wsdl4j</artifactId>
 			<version>1.6.3</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-tools-wsdlto-core -->
 <dependency>
+    <groupId>org.apache.cxf</groupId>
+    <artifactId>cxf-tools-wsdlto-core</artifactId>
+    <version>${cxf.version}</version>
+</dependency>
+<dependency>
+	<groupId>org.apache.cxf</groupId>
+	<artifactId>cxf-tools-wsdlto-frontend-jaxws</artifactId>
+	<version>${cxf.version}</version>
+</dependency>
+	<dependency>
+		<groupId>org.apache.cxf</groupId>
+		<artifactId>cxf-tools-wsdlto-databinding-jaxb</artifactId>
+		<version>${cxf.version}</version>
+	</dependency> 		
+      <dependency>
         <groupId>org.cache2k</groupId>
         <artifactId>cache2k-base-bom</artifactId>
         <version>1.2.0.Final</version>
         <type>pom</type>
       </dependency>		
+      
+        <dependency>
+           <groupId>framexpert.run.oltp</groupId>
+            <artifactId>framexpert-run-oltp-ext-config-server</artifactId>
+            <version>4.0.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+              
 	</dependencies>
 
 
